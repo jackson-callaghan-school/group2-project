@@ -25,7 +25,11 @@ prob_survival <- function(pclass, sexmale, age){
   
   #take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
   
-  log_odds_survival <- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
+  log_reg_output <- logistic_regression_model_1(pclass, sexmale, age)
+  
+  log_odds_survival <- (log_reg_output$intercept)+(log_reg_output$beta1*pclass)+(log_reg_output$beta2*sexmale)+(log_reg_output$beta3*age)
+  
+  #log_odds_survival <- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
   probs_survival <- exp(log_odds_survival)/(1+(exp(log_odds_survival)))
   
   return(probs_survival)
