@@ -1,11 +1,7 @@
 # group2-project
 
  a project, made by group 2
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> d950a1fd14a900e8b39edb42f773a2f6a4e48775
  sibsp is number of siblings/spouses abroad
  parch is number of parents/children abroad
 
@@ -13,8 +9,6 @@ Information taken from: http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets
 
 Guide to variable names:
 http://campus.lakeforest.edu/frank/FILES/MLFfiles/Bio150/Titanic/TitanicMETA.pdf
-<<<<<<< HEAD
-=======
 
 ## Todo:
 
@@ -57,4 +51,3 @@ Task 2:
 Task 3:
 
 - ???
->>>>>>> d950a1fd14a900e8b39edb42f773a2f6a4e48775
