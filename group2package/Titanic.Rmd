@@ -70,7 +70,7 @@ prob_survival <- function(pclass, sex_binary, age){ #need to have the logistic_r
   
   log_reg_output_reorg <- log_reg_output %>% tidy()
   
-  log_odds_survival <- (log_reg_output_reorg$estimate[1,2])+(log_reg_output_reorg$estimate[2,2])+(log_reg_output$beta2*sex_binary)+(log_reg_output$beta3*age)
+  log_odds_survival <- (log_reg_output_reorg$estimate[1,2])+(log_reg_output_reorg$estimate[2,2])+(log_reg_output$*sex_binary)+(log_reg_output$beta3*age)
   
   #log_odds_survival <- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
 =======
