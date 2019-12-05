@@ -13,10 +13,6 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-hello <- function() {
-  print("Hello, world!")
-}
-
 #Task 1
 
 logistic_regression_model_1 <- function(data_set){
@@ -36,8 +32,6 @@ prob_survival <- function(pclass, sexmale, age){
 }
 
 #Task 2
-
-ggplot(mapping = aes(x = probs_survival), data = titanic_data) + geom_histogram(binwidth = 1.2, alpha = 0.5)
 
 # How can we get probs_survival to be plotted for every single social class, and age? And what plot should we use? 
 
