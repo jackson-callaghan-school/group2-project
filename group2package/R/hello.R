@@ -14,23 +14,23 @@ read_data <- function(filename) {
 logistic_regression_model_1 <- function(data_set) {
 
   data_set <- titanic_data
-  glm(formula = survived ~ pclass + sex + age, data = data_set, family = binomial) #need to write function to be conducive to all data sets or just this one?
+  glm(formula = survived ~ pclass + sex_binary + age, data = data_set, family = binomial) #need to write function to be conducive to all data sets or just this one?
 }
 
 prob_survival <- function(pclass, sex_binary, age){ #need to have the logistic_regression_model function as an argument here
 
   #take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
-  log_reg_output <- logistic_regression_model_1(pclass, sexmale, age)
+  log_reg_output <- logistic_regression_model_1(pclass, sex_binary, age)
 
-  log_reg_output_reorg <- log_reg_output %>% tidy()
-
-  log_odds_survival <- (log_reg_output_reorg$estimate[1,2])+(log_reg_output_reorg$estimate[2,2])+(log_reg_output$estimate[2,3]*sex_binary)+(log_reg_output$estimate[2,4]*age)
+  log_odds_survival <- (summary(log_reg_output)$coefficients[1,1])+
+    ((summary(log_reg_output)$coefficients[2,1])*pclass)+((summary(log_reg_output)$coefficients[3,1])*sex_binary)+
+    ((summary(log_reg_output)$coefficients[4,1])*age)
 
   #log_odds_survival <- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
 
-      probs_survival <- exp(log_odds_survival)/(1+(exp(log_odds_survival)))
+    probs_survival <- exp(log_odds_survival)/(1+(exp(log_odds_survival)))
 
-      return(probs_survival)
+    return(probs_survival)
     }
 
 #Task 2
