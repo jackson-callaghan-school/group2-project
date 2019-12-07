@@ -36,7 +36,7 @@ survival_stats(dataset)
 ```
 
 ```{r}
-survival_plots(dataset)
+survival_plots(dataset, 20)
 ```
 
 
