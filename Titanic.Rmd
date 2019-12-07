@@ -10,15 +10,8 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 ```{r}
 library(dplyr)
 library(tidyverse)
-
 library(broom)
-
 ```
-
-```{r}
-read_data(titanic_data)
-```
-
 
 ```{r}
 titanic_data <- read.csv("titanic_group_project.csv")
@@ -36,11 +29,7 @@ titanic_data_new
 ```
 
 ```{r}
-<<<<<<< HEAD
 log_reg_model <- glm(formula = survived ~ pclass + sex_binary + age, data = titanic_data_new, family = binomial)
-=======
-log_reg_model <- glm(formula = survived ~ pclass + sex + age, data = titanic_data, family = binomial)
->>>>>>> d950a1fd14a900e8b39edb42f773a2f6a4e48775
 log_reg_model
 ```
 
@@ -56,17 +45,12 @@ logistic_regression_model_1 <- function(data_set){
 ```
 
 ```{r}
-<<<<<<< HEAD
 log_reg_output <- logistic_regression_model_1(titanic_data)
 log_reg_output %>% tidy()
-=======
-logistic_regression_model_1(titanic_data)
->>>>>>> d950a1fd14a900e8b39edb42f773a2f6a4e48775
 ```
 
 
 ```{r}
-<<<<<<< HEAD
 prob_survival <- function(pclass, sex_binary, age){ #need to have the logistic_regression_model function as an argument here
   
   #take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
@@ -74,16 +58,9 @@ prob_survival <- function(pclass, sex_binary, age){ #need to have the logistic_r
   
   log_reg_output_reorg <- log_reg_output %>% tidy()
   
-  log_odds_survival <- (log_reg_output_reorg$estimate[1,2])+(log_reg_output_reorg$estimate[2,2])+(log_reg_output$*sex_binary)+(log_reg_output$beta3*age)
+  log_odds_survival <- (log_reg_output_reorg$estimate[1,2])+(log_reg_output_reorg$estimate[2,2])+(log_reg_output$beta2*sex_binary)+(log_reg_output$beta3*age)
   
   #log_odds_survival <- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
-=======
-prob_survival <- function(pclass, sexmale, age){ #need to have the logistic_regression_model function as an argument here
-  
-  #take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
-  
-  log_odds_survival <- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
->>>>>>> d950a1fd14a900e8b39edb42f773a2f6a4e48775
   probs_survival <- exp(log_odds_survival)/(1+(exp(log_odds_survival)))
   
   return(probs_survival)
