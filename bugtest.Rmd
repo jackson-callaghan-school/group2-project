@@ -1,0 +1,10 @@
+---
+title: "Bugtest"
+output: html_notebook
+---
+
+```{r}
+dataset <- read_data("titanic_group_project.csv")
+dataset
+```
+
