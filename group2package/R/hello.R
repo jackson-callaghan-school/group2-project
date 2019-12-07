@@ -68,7 +68,7 @@ survival_stats <- function(data_set) {
 survival_plots <- function(data_set, nbin) {
 
   #plot probability of survival for each person
-  survival_data <- survival_stats(data_set)
+  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
 
   ggplot(survival_data) +
     geom_histogram(
@@ -81,7 +81,7 @@ survival_plots <- function(data_set, nbin) {
 plots_by <- function(data_set, nbin) {
   
   #plot probability of survival for each person
-  survival_data <- survival_stats(data_set)
+  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
   
   ggplot(survival_data) +
     geom_histogram(
