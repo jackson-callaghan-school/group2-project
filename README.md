@@ -50,4 +50,20 @@ Task 2:
 
 Task 3:
 
-- ???
+- write function which guesses at survival
+
+  - takes probability cutoff value
+  
+  - returns df with new col of 0 or 1 for predicted survival
+  
+- write function which compares guess of survival to predicted survival
+
+  - output df with new column for correct prediction or not
+  
+- analyze/visualize accuracy of model
+
+  - graph of % correct vs cutoff value?
+  
+  - graph of all survival probabilities colored by correct or not?
+  
+  - something else?
