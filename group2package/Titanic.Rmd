@@ -16,7 +16,14 @@ library(broom)
 ```
 
 ```{r}
-read_data(titanic_data)
+read_data("titanic_group_project.csv")
+```
+
+```{r}
+dataset <- read_data("titanic_group_project.csv")
+dataset
+
+#logistic_regression_model_1(dataset)
 ```
 
 

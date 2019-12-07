@@ -2,7 +2,7 @@
 # read data
 read_data <- function(filename) {
   # read the data and transform to prep for logistic regression
-  titanic_data <- read.csv(filename)
+  titanic_data <- read.csv("titanic_group_project.csv")
   titanic_data$sex <- as.character(titanic_data$sex)
   titanic_data <- titanic_data %>% mutate(sex_binary = ifelse(sex == "female", 1, 0))
 
@@ -14,15 +14,10 @@ read_data <- function(filename) {
 logistic_regression_model_1 <- function(data_set) {
 
   data_set <- titanic_data
-  glm(
-    formula = survived ~ pclass + sex_binary + age,
-    data = data_set,
-    family = binomial
-  ) #need to write function to be conducive to all data sets or just this one?
+  glm(formula = survived ~ pclass + sex_binary + age, data = data_set, family = binomial) #need to write function to be conducive to all data sets or just this one?
 }
 
-#need to have the logistic_regression_model function as an argument here
-prob_survival <- function(pclass, sex_binary, age) {
+prob_survival <- function(pclass, sex_binary, age){ #need to have the logistic_regression_model function as an argument here
 
   #take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
   log_reg_output <- logistic_regression_model_1(pclass, sex_binary, age)
