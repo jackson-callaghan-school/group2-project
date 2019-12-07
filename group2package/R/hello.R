@@ -22,7 +22,6 @@ read_data <- function(filename) {
 
 logistic_regression_model_1 <- function(data_set) {
 
-  data_set <- titanic_data
   glm(
     formula = survived ~ pclass + sex_binary + age,
     data = data_set,
