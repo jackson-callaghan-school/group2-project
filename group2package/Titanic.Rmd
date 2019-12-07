@@ -27,6 +27,20 @@ logistic_regression_model_1(dataset)
 ```
 
 ```{r}
+prob_survival(dataset, 1,1,15)
+```
+
+
+```{r}
+survival_stats(dataset)
+```
+
+```{r}
+survival_plots(dataset)
+```
+
+
+```{r}
 titanic_data <- read.csv("titanic_group_project.csv")
 titanic_data
 ```

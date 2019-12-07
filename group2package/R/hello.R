@@ -55,9 +55,10 @@ survival_stats <- function(data_set) {
 
   # calculate the odds of survival for every case in a dataset
   new_data <- data_set %>%
-    mutate(prob.survival = prob_survival(data_set
+    mutate(prob.survival = prob_survival(
+      data_set,
       data_set$pclass,
-      data_set$sex,
+      data_set$sex_binary,
       data_set$age
     ))
 
