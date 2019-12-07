@@ -23,9 +23,8 @@ read_data("titanic_group_project.csv")
 dataset <- read_data("titanic_group_project.csv")
 dataset
 
-#logistic_regression_model_1(dataset)
+logistic_regression_model_1(dataset)
 ```
-
 
 ```{r}
 titanic_data <- read.csv("titanic_group_project.csv")
