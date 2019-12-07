@@ -8,3 +8,21 @@ dataset <- read_data("titanic_group_project.csv")
 dataset
 ```
 
+```{r}
+tiris <- as.tibble(iris)
+tiris
+```
+
+
+```{r}
+
+
+mytest <- function(variable) {
+  tiris[variable]
+} 
+```
+
+```{r}
+mytest("Sepal.Length")
+```
+

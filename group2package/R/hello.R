@@ -20,20 +20,21 @@ read_data <- function(filename) {
 
 # Task 1
 
+# need to write function to be conducive to all data sets or just this one?
 logistic_regression_model_1 <- function(data_set) {
 
-  glm(
+  return(glm(
     formula = survived ~ pclass + sex_binary + age,
     data = data_set,
     family = binomial
-  ) # need to write function to be conducive to all data sets or just this one?
+  ))
 }
 
 # need to have the logistic_regression_model function as an argument here
-prob_survival <- function(pclass, sex_binary, age) {
+prob_survival <- function(data_set, pclass, sex_binary, age) {
 
   # take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
-  log_reg_output <- logistic_regression_model_1(pclass, sex_binary, age)
+  log_reg_output <- logistic_regression_model_1(data_set)
 
   log_odds_survival <- (summary(log_reg_output)$coefficients[1,1]) +
     (summary(log_reg_output)$coefficients[2,1] * pclass) +
@@ -54,7 +55,7 @@ survival_stats <- function(data_set) {
 
   # calculate the odds of survival for every case in a dataset
   new_data <- data_set %>%
-    mutate(prob.survival = prob_survival(
+    mutate(prob.survival = prob_survival(data_set
       data_set$pclass,
       data_set$sex,
       data_set$age
