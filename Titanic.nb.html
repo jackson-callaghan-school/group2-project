@@ -1753,72 +1753,47 @@ summary {
 <p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Cmd+Shift+Enter</em>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5saWJyYXJ5KGJyb29tKVxuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXZlcnNlKVxubGlicmFyeShicm9vbSlcbmBgYCJ9 -->
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
-
-library(broom)
-</code></pre>
+library(broom)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZF9kYXRhKHRpdGFuaWNfZGF0YSlcbmBgYCJ9 -->
-<pre class="r"><code>read_data(titanic_data)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGl0YW5pY19kYXRhIDwtIHJlYWQuY3N2KFwidGl0YW5pY19ncm91cF9wcm9qZWN0LmNzdlwiKVxudGl0YW5pY19kYXRhXG5gYGAifQ== -->
+<pre class="r"><code>titanic_data &lt;- read.csv(&quot;titanic_group_project.csv&quot;)
+titanic_data</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcmVhZF9kYXRhKHRpdGFuaWNfZGF0YSkgOiBjb3VsZCBub3QgZmluZCBmdW5jdGlvbiBcInJlYWRfZGF0YVwiXG4ifQ== -->
-<pre><code>Error in read_data(titanic_data) : could not find function &quot;read_data&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGl0YW5pY19kYXRhIDwtIHJlYWQuY3N2KFwidGl0YW5pY19ncm91cF9wcm9qZWN0LmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>titanic_data &lt;- read.csv(&quot;titanic_group_project.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiY2Fubm90IG9wZW4gZmlsZSAndGl0YW5pY19ncm91cF9wcm9qZWN0LmNzdic6IE5vIHN1Y2ggZmlsZSBvciBkaXJlY3RvcnlFcnJvciBpbiBmaWxlKGZpbGUsIFwicnRcIikgOiBjYW5ub3Qgb3BlbiB0aGUgY29ubmVjdGlvblxuIn0= -->
-<pre><code>cannot open file 'titanic_group_project.csv': No such file or directoryError in file(file, &quot;rt&quot;) : cannot open the connection</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxudGl0YW5pY19kYXRhJHNleCA8LSBhcy5jaGFyYWN0ZXIodGl0YW5pY19kYXRhJHNleClcbmBgYFxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGl0YW5pY19kYXRhJHNleCA8LSBhcy5jaGFyYWN0ZXIodGl0YW5pY19kYXRhJHNleClcbmBgYCJ9 -->
 <pre class="r"><code>titanic_data$sex &lt;- as.character(titanic_data$sex)</code></pre>
-<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxudGl0YW5pY19kYXRhX25ldyA8LSB0aXRhbmljX2RhdGEgJT4lIG11dGF0ZShzZXhfYmluYXJ5ID0gaWZlbHNlKHNleCA9PSBcXGZlbWFsZVxcLCAxLDApKVxudGl0YW5pY19kYXRhX25ld1xuYGBgXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r</p>
-<pre class="r"><code>titanic_data_new &lt;- titanic_data %&gt;% mutate(sex_binary = ifelse(sex == \female\, 1,0))
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGl0YW5pY19kYXRhX25ldyA8LSB0aXRhbmljX2RhdGEgJT4lIG11dGF0ZShzZXhfYmluYXJ5ID0gaWZlbHNlKHNleCA9PSBcImZlbWFsZVwiLCAxLDApKVxudGl0YW5pY19kYXRhX25ld1xuYGBgIn0= -->
+<pre class="r"><code>titanic_data_new &lt;- titanic_data %&gt;% mutate(sex_binary = ifelse(sex == &quot;female&quot;, 1,0))
 titanic_data_new</code></pre>
-<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuPDw8PDw8PCBIRUFEXG5sb2dfcmVnX21vZGVsIDwtIGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXhfYmluYXJ5ICsgYWdlLCBkYXRhID0gdGl0YW5pY19kYXRhX25ldywgZmFtaWx5ID0gYmlub21pYWwpXG49PT09PT09XG5sb2dfcmVnX21vZGVsIDwtIGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXggKyBhZ2UsIGRhdGEgPSB0aXRhbmljX2RhdGEsIGZhbWlseSA9IGJpbm9taWFsKVxuPj4+Pj4+PiBkOTUwYTFmZDE0YTkwMGU4YjM5ZWRiNDJmNzczYTJmNmE0ZTQ4Nzc1XG5sb2dfcmVnX21vZGVsXG5gYGBcbmBgYFxuYGBgIn0= -->
-<p><code>r</code>r</p>
-<pre class="r"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-log_reg_model &lt;- glm(formula = survived ~ pclass + sex_binary + age, data = titanic_data_new, family = binomial)
-=======
-log_reg_model &lt;- glm(formula = survived ~ pclass + sex + age, data = titanic_data, family = binomial)
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d950a1fd14a900e8b39edb42f773a2f6a4e48775
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nX3JlZ19tb2RlbCA8LSBnbG0oZm9ybXVsYSA9IHN1cnZpdmVkIH4gcGNsYXNzICsgc2V4X2JpbmFyeSArIGFnZSwgZGF0YSA9IHRpdGFuaWNfZGF0YV9uZXcsIGZhbWlseSA9IGJpbm9taWFsKVxubG9nX3JlZ19tb2RlbFxuYGBgIn0= -->
+<pre class="r"><code>log_reg_model &lt;- glm(formula = survived ~ pclass + sex_binary + age, data = titanic_data_new, family = binomial)
 log_reg_model</code></pre>
-<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuI1Rhc2sgMVxuXG5sb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEgPC0gZnVuY3Rpb24oZGF0YV9zZXQpe1xuICBcbiAgI2RhdGFfc2V0IDwtIHRpdGFuaWNfZGF0YSAgICAgI25hbWUgb2YgdXNlcidzIGRhdGEgc2V0XG4gIGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXggKyBhZ2UsIGRhdGEgPSBkYXRhX3NldCwgZmFtaWx5ID0gYmlub21pYWwpICNuZWVkIHRvIHdyaXRlIGZ1bmN0aW9uIHRvIGJlIGNvbmR1Y2l2ZSB0byBhbGwgZGF0YSBzZXRzIG9yIGp1c3QgdGhpcyBvbmU/IFxuICAgI3JldHVybiBsb2dpc3RpYyByZWdyZXNzaW9uIG1vZGVsIGZ1bmN0aW9uIFxufVxuYGBgXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI1Rhc2sgMVxuXG5sb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEgPC0gZnVuY3Rpb24oZGF0YV9zZXQpe1xuICBcbiAgI2RhdGFfc2V0IDwtIHRpdGFuaWNfZGF0YSAgICAgI25hbWUgb2YgdXNlcidzIGRhdGEgc2V0XG4gIGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXggKyBhZ2UsIGRhdGEgPSBkYXRhX3NldCwgZmFtaWx5ID0gYmlub21pYWwpICNuZWVkIHRvIHdyaXRlIGZ1bmN0aW9uIHRvIGJlIGNvbmR1Y2l2ZSB0byBhbGwgZGF0YSBzZXRzIG9yIGp1c3QgdGhpcyBvbmU/IFxuICAgI3JldHVybiBsb2dpc3RpYyByZWdyZXNzaW9uIG1vZGVsIGZ1bmN0aW9uIFxufVxuYGBgIn0= -->
 <pre class="r"><code>#Task 1
 
 logistic_regression_model_1 &lt;- function(data_set){
@@ -1827,30 +1802,21 @@ logistic_regression_model_1 &lt;- function(data_set){
   glm(formula = survived ~ pclass + sex + age, data = data_set, family = binomial) #need to write function to be conducive to all data sets or just this one? 
    #return logistic regression model function 
 }</code></pre>
-<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuPDw8PDw8PCBIRUFEXG5sb2dfcmVnX291dHB1dCA8LSBsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEodGl0YW5pY19kYXRhKVxubG9nX3JlZ19vdXRwdXQgJT4lIHRpZHkoKVxuPT09PT09PVxubG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbF8xKHRpdGFuaWNfZGF0YSlcbj4+Pj4+Pj4gZDk1MGExZmQxNGE5MDBlOGIzOWVkYjQyZjc3M2EyZjZhNGU0ODc3NVxuYGBgXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r</p>
-<pre class="r"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-log_reg_output &lt;- logistic_regression_model_1(titanic_data)
-log_reg_output %&gt;% tidy()
-=======
-logistic_regression_model_1(titanic_data)
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d950a1fd14a900e8b39edb42f773a2f6a4e48775</code></pre>
-<pre><code></code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nX3JlZ19vdXRwdXQgPC0gbG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbF8xKHRpdGFuaWNfZGF0YSlcbmxvZ19yZWdfb3V0cHV0ICU+JSB0aWR5KClcbmBgYCJ9 -->
+<pre class="r"><code>log_reg_output &lt;- logistic_regression_model_1(titanic_data)
+log_reg_output %&gt;% tidy()</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuPDw8PDw8PCBIRUFEXG5wcm9iX3N1cnZpdmFsIDwtIGZ1bmN0aW9uKHBjbGFzcywgc2V4X2JpbmFyeSwgYWdlKXsgI25lZWQgdG8gaGF2ZSB0aGUgbG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbCBmdW5jdGlvbiBhcyBhbiBhcmd1bWVudCBoZXJlXG4gIFxuICAjdGFrZSB0aGUgb3V0cHV0cyBvZiB0aGUgbG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbF8xIGZ1bmN0aW9uIGFuZCBjYWxjdWxhdGUgdGhlIHByb2JhYmlsaXR5IG9mIHN1cnZpdmFsXG4gIGxvZ19yZWdfb3V0cHV0IDwtIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMShwY2xhc3MsIHNleG1hbGUsIGFnZSlcbiAgXG4gIGxvZ19yZWdfb3V0cHV0X3Jlb3JnIDwtIGxvZ19yZWdfb3V0cHV0ICU+JSB0aWR5KClcbiAgXG4gIGxvZ19vZGRzX3N1cnZpdmFsIDwtIChsb2dfcmVnX291dHB1dF9yZW9yZyRlc3RpbWF0ZVsxLDJdKSsobG9nX3JlZ19vdXRwdXRfcmVvcmckZXN0aW1hdGVbMiwyXSkrKGxvZ19yZWdfb3V0cHV0JGJldGEyKnNleF9iaW5hcnkpKyhsb2dfcmVnX291dHB1dCRiZXRhMyphZ2UpXG4gIFxuICAjbG9nX29kZHNfc3Vydml2YWwgPC0gNC41ODkyNy0oMS4xMzMyNCpwY2xhc3MpLSgyLjQ5NzM4KnNleG1hbGUpLSgwLjAzMzg4KmFnZSlcbj09PT09PT1cbnByb2Jfc3Vydml2YWwgPC0gZnVuY3Rpb24ocGNsYXNzLCBzZXhtYWxlLCBhZ2UpeyAjbmVlZCB0byBoYXZlIHRoZSBsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsIGZ1bmN0aW9uIGFzIGFuIGFyZ3VtZW50IGhlcmVcbiAgXG4gICN0YWtlIHRoZSBvdXRwdXRzIG9mIHRoZSBsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEgZnVuY3Rpb24gYW5kIGNhbGN1bGF0ZSB0aGUgcHJvYmFiaWxpdHkgb2Ygc3Vydml2YWxcbiAgXG4gIGxvZ19vZGRzX3N1cnZpdmFsIDwtIDQuNTg5MjctKDEuMTMzMjQqcGNsYXNzKS0oMi40OTczOCpzZXhtYWxlKS0oMC4wMzM4OCphZ2UpXG4+Pj4+Pj4+IGQ5NTBhMWZkMTRhOTAwZThiMzllZGI0MmY3NzNhMmY2YTRlNDg3NzVcbiAgcHJvYnNfc3Vydml2YWwgPC0gZXhwKGxvZ19vZGRzX3N1cnZpdmFsKS8oMSsoZXhwKGxvZ19vZGRzX3N1cnZpdmFsKSkpXG4gIFxuICByZXR1cm4ocHJvYnNfc3Vydml2YWwpXG59XG5gYGBcbmBgYFxuYGBgIn0= -->
-<p><code>r</code>r</p>
-<pre class="r"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-prob_survival &lt;- function(pclass, sex_binary, age){ #need to have the logistic_regression_model function as an argument here
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvYl9zdXJ2aXZhbCA8LSBmdW5jdGlvbihwY2xhc3MsIHNleF9iaW5hcnksIGFnZSl7ICNuZWVkIHRvIGhhdmUgdGhlIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWwgZnVuY3Rpb24gYXMgYW4gYXJndW1lbnQgaGVyZVxuICBcbiAgI3Rha2UgdGhlIG91dHB1dHMgb2YgdGhlIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMSBmdW5jdGlvbiBhbmQgY2FsY3VsYXRlIHRoZSBwcm9iYWJpbGl0eSBvZiBzdXJ2aXZhbFxuICBsb2dfcmVnX291dHB1dCA8LSBsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEocGNsYXNzLCBzZXhtYWxlLCBhZ2UpXG4gIFxuICBsb2dfcmVnX291dHB1dF9yZW9yZyA8LSBsb2dfcmVnX291dHB1dCAlPiUgdGlkeSgpXG4gIFxuICBsb2dfb2Rkc19zdXJ2aXZhbCA8LSAobG9nX3JlZ19vdXRwdXRfcmVvcmckZXN0aW1hdGVbMSwyXSkrKGxvZ19yZWdfb3V0cHV0X3Jlb3JnJGVzdGltYXRlWzIsMl0pKyhsb2dfcmVnX291dHB1dCRiZXRhMipzZXhfYmluYXJ5KSsobG9nX3JlZ19vdXRwdXQkYmV0YTMqYWdlKVxuICBcbiAgI2xvZ19vZGRzX3N1cnZpdmFsIDwtIDQuNTg5MjctKDEuMTMzMjQqcGNsYXNzKS0oMi40OTczOCpzZXhtYWxlKS0oMC4wMzM4OCphZ2UpXG4gIHByb2JzX3N1cnZpdmFsIDwtIGV4cChsb2dfb2Rkc19zdXJ2aXZhbCkvKDErKGV4cChsb2dfb2Rkc19zdXJ2aXZhbCkpKVxuICBcbiAgcmV0dXJuKHByb2JzX3N1cnZpdmFsKVxufVxuYGBgIn0= -->
+<pre class="r"><code>prob_survival &lt;- function(pclass, sex_binary, age){ #need to have the logistic_regression_model function as an argument here
   
   #take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
   log_reg_output &lt;- logistic_regression_model_1(pclass, sexmale, age)
@@ -1860,39 +1826,28 @@ prob_survival &lt;- function(pclass, sex_binary, age){ #need to have the logisti
   log_odds_survival &lt;- (log_reg_output_reorg$estimate[1,2])+(log_reg_output_reorg$estimate[2,2])+(log_reg_output$beta2*sex_binary)+(log_reg_output$beta3*age)
   
   #log_odds_survival &lt;- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
-=======
-prob_survival &lt;- function(pclass, sexmale, age){ #need to have the logistic_regression_model function as an argument here
-  
-  #take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
-  
-  log_odds_survival &lt;- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d950a1fd14a900e8b39edb42f773a2f6a4e48775
   probs_survival &lt;- exp(log_odds_survival)/(1+(exp(log_odds_survival)))
   
   return(probs_survival)
 }</code></pre>
-<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuI1Rhc2sgMlxuXG5nZ3Bsb3QobWFwcGluZyA9IGFlcyh4ID0gcHJvYnNfc3Vydml2YWwpLCBkYXRhID0gdGl0YW5pY19kYXRhKSArIGdlb21faGlzdG9ncmFtKGJpbndpZHRoID0gMS4yLCBhbHBoYSA9IDAuNSlcblxuIyBIb3cgY2FuIHdlIGdldCBwcm9ic19zdXJ2aXZhbCB0byBiZSBwbG90dGVkIGZvciBldmVyeSBzaW5nbGUgc29jaWFsIGNsYXNzLCBhbmQgYWdlPyBBbmQgd2hhdCBwbG90IHNob3VsZCB3ZSB1c2U/IFxuICAgICAgIFxuYGBgXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI1Rhc2sgMlxuXG5nZ3Bsb3QobWFwcGluZyA9IGFlcyh4ID0gcHJvYnNfc3Vydml2YWwpLCBkYXRhID0gdGl0YW5pY19kYXRhKSArIGdlb21faGlzdG9ncmFtKGJpbndpZHRoID0gMS4yLCBhbHBoYSA9IDAuNSlcblxuIyBIb3cgY2FuIHdlIGdldCBwcm9ic19zdXJ2aXZhbCB0byBiZSBwbG90dGVkIGZvciBldmVyeSBzaW5nbGUgc29jaWFsIGNsYXNzLCBhbmQgYWdlPyBBbmQgd2hhdCBwbG90IHNob3VsZCB3ZSB1c2U/IFxuICAgICAgIFxuYGBgIn0= -->
 <pre class="r"><code>#Task 2
 
 ggplot(mapping = aes(x = probs_survival), data = titanic_data) + geom_histogram(binwidth = 1.2, alpha = 0.5)
 
 # How can we get probs_survival to be plotted for every single social class, and age? And what plot should we use? 
        </code></pre>
-<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxubG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbCA8LSBmdW5jdGlvbihzb2NpYWxfY2xhc3MsIHNleCwgYWdlKXtcbiAgXG4gIHRpdGFuaWNfZGF0YSRwY2xhc3MgPC0gc29jaWFsX2NsYXNzXG4gIHRpdGFuaWNfZGF0YSRzZXggPC0gc2V4XG4gIHRpdGFuaWNfZGF0YSRhZ2UgPC0gYWdlXG4gIFxuICByZXR1cm4oZ2xtKGZvcm11bGEgPSBzdXJ2aXZlZCB+IHBjbGFzcyArIHNleCArIGFnZSwgZGF0YSA9IHRpdGFuaWNfZGF0YV9uZXcsIGZhbWlseSA9IGJpbm9taWFsKSlcbn1cbmBgYFxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbCA8LSBmdW5jdGlvbihzb2NpYWxfY2xhc3MsIHNleCwgYWdlKXtcbiAgXG4gIHRpdGFuaWNfZGF0YSRwY2xhc3MgPC0gc29jaWFsX2NsYXNzXG4gIHRpdGFuaWNfZGF0YSRzZXggPC0gc2V4XG4gIHRpdGFuaWNfZGF0YSRhZ2UgPC0gYWdlXG4gIFxuICByZXR1cm4oZ2xtKGZvcm11bGEgPSBzdXJ2aXZlZCB+IHBjbGFzcyArIHNleCArIGFnZSwgZGF0YSA9IHRpdGFuaWNfZGF0YV9uZXcsIGZhbWlseSA9IGJpbm9taWFsKSlcbn1cbmBgYCJ9 -->
 <pre class="r"><code>logistic_regression_model &lt;- function(social_class, sex, age){
   
   titanic_data$pclass &lt;- social_class
@@ -1901,7 +1856,6 @@ ggplot(mapping = aes(x = probs_survival), data = titanic_data) + geom_histogram(
   
   return(glm(formula = survived ~ pclass + sex + age, data = titanic_data_new, family = binomial))
 }</code></pre>
-<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1910,7 +1864,7 @@ ggplot(mapping = aes(x = probs_survival), data = titanic_data) + geom_histogram(
 <p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ21kK1NoaWZ0K0VudGVyKi4gCgpgYGB7cn0KbGlicmFyeShkcGx5cikKbGlicmFyeSh0aWR5dmVyc2UpCgpsaWJyYXJ5KGJyb29tKQoKYGBgCgpgYGB7cn0KcmVhZF9kYXRhKHRpdGFuaWNfZGF0YSkKYGBgCgoKYGBge3J9CnRpdGFuaWNfZGF0YSA8LSByZWFkLmNzdigidGl0YW5pY19ncm91cF9wcm9qZWN0LmNzdiIpCnRpdGFuaWNfZGF0YQpgYGAKCmBgYHtyfQp0aXRhbmljX2RhdGEkc2V4IDwtIGFzLmNoYXJhY3Rlcih0aXRhbmljX2RhdGEkc2V4KQpgYGAKCgpgYGB7cn0KdGl0YW5pY19kYXRhX25ldyA8LSB0aXRhbmljX2RhdGEgJT4lIG11dGF0ZShzZXhfYmluYXJ5ID0gaWZlbHNlKHNleCA9PSAiZmVtYWxlIiwgMSwwKSkKdGl0YW5pY19kYXRhX25ldwpgYGAKCmBgYHtyfQo8PDw8PDw8IEhFQUQKbG9nX3JlZ19tb2RlbCA8LSBnbG0oZm9ybXVsYSA9IHN1cnZpdmVkIH4gcGNsYXNzICsgc2V4X2JpbmFyeSArIGFnZSwgZGF0YSA9IHRpdGFuaWNfZGF0YV9uZXcsIGZhbWlseSA9IGJpbm9taWFsKQo9PT09PT09CmxvZ19yZWdfbW9kZWwgPC0gZ2xtKGZvcm11bGEgPSBzdXJ2aXZlZCB+IHBjbGFzcyArIHNleCArIGFnZSwgZGF0YSA9IHRpdGFuaWNfZGF0YSwgZmFtaWx5ID0gYmlub21pYWwpCj4+Pj4+Pj4gZDk1MGExZmQxNGE5MDBlOGIzOWVkYjQyZjc3M2EyZjZhNGU0ODc3NQpsb2dfcmVnX21vZGVsCmBgYAoKYGBge3J9IAojVGFzayAxCgpsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEgPC0gZnVuY3Rpb24oZGF0YV9zZXQpewogIAogICNkYXRhX3NldCA8LSB0aXRhbmljX2RhdGEgICAgICNuYW1lIG9mIHVzZXIncyBkYXRhIHNldAogIGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXggKyBhZ2UsIGRhdGEgPSBkYXRhX3NldCwgZmFtaWx5ID0gYmlub21pYWwpICNuZWVkIHRvIHdyaXRlIGZ1bmN0aW9uIHRvIGJlIGNvbmR1Y2l2ZSB0byBhbGwgZGF0YSBzZXRzIG9yIGp1c3QgdGhpcyBvbmU/IAogICAjcmV0dXJuIGxvZ2lzdGljIHJlZ3Jlc3Npb24gbW9kZWwgZnVuY3Rpb24gCn0KYGBgCgpgYGB7cn0KPDw8PDw8PCBIRUFECmxvZ19yZWdfb3V0cHV0IDwtIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMSh0aXRhbmljX2RhdGEpCmxvZ19yZWdfb3V0cHV0ICU+JSB0aWR5KCkKPT09PT09PQpsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEodGl0YW5pY19kYXRhKQo+Pj4+Pj4+IGQ5NTBhMWZkMTRhOTAwZThiMzllZGI0MmY3NzNhMmY2YTRlNDg3NzUKYGBgCgoKYGBge3J9Cjw8PDw8PDwgSEVBRApwcm9iX3N1cnZpdmFsIDwtIGZ1bmN0aW9uKHBjbGFzcywgc2V4X2JpbmFyeSwgYWdlKXsgI25lZWQgdG8gaGF2ZSB0aGUgbG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbCBmdW5jdGlvbiBhcyBhbiBhcmd1bWVudCBoZXJlCiAgCiAgI3Rha2UgdGhlIG91dHB1dHMgb2YgdGhlIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMSBmdW5jdGlvbiBhbmQgY2FsY3VsYXRlIHRoZSBwcm9iYWJpbGl0eSBvZiBzdXJ2aXZhbAogIGxvZ19yZWdfb3V0cHV0IDwtIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMShwY2xhc3MsIHNleG1hbGUsIGFnZSkKICAKICBsb2dfcmVnX291dHB1dF9yZW9yZyA8LSBsb2dfcmVnX291dHB1dCAlPiUgdGlkeSgpCiAgCiAgbG9nX29kZHNfc3Vydml2YWwgPC0gKGxvZ19yZWdfb3V0cHV0X3Jlb3JnJGVzdGltYXRlWzEsMl0pKyhsb2dfcmVnX291dHB1dF9yZW9yZyRlc3RpbWF0ZVsyLDJdKSsobG9nX3JlZ19vdXRwdXQkKnNleF9iaW5hcnkpKyhsb2dfcmVnX291dHB1dCRiZXRhMyphZ2UpCiAgCiAgI2xvZ19vZGRzX3N1cnZpdmFsIDwtIDQuNTg5MjctKDEuMTMzMjQqcGNsYXNzKS0oMi40OTczOCpzZXhtYWxlKS0oMC4wMzM4OCphZ2UpCj09PT09PT0KcHJvYl9zdXJ2aXZhbCA8LSBmdW5jdGlvbihwY2xhc3MsIHNleG1hbGUsIGFnZSl7ICNuZWVkIHRvIGhhdmUgdGhlIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWwgZnVuY3Rpb24gYXMgYW4gYXJndW1lbnQgaGVyZQogIAogICN0YWtlIHRoZSBvdXRwdXRzIG9mIHRoZSBsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEgZnVuY3Rpb24gYW5kIGNhbGN1bGF0ZSB0aGUgcHJvYmFiaWxpdHkgb2Ygc3Vydml2YWwKICAKICBsb2dfb2Rkc19zdXJ2aXZhbCA8LSA0LjU4OTI3LSgxLjEzMzI0KnBjbGFzcyktKDIuNDk3Mzgqc2V4bWFsZSktKDAuMDMzODgqYWdlKQo+Pj4+Pj4+IGQ5NTBhMWZkMTRhOTAwZThiMzllZGI0MmY3NzNhMmY2YTRlNDg3NzUKICBwcm9ic19zdXJ2aXZhbCA8LSBleHAobG9nX29kZHNfc3Vydml2YWwpLygxKyhleHAobG9nX29kZHNfc3Vydml2YWwpKSkKICAKICByZXR1cm4ocHJvYnNfc3Vydml2YWwpCn0KYGBgCgpgYGB7cn0KI1Rhc2sgMgoKZ2dwbG90KG1hcHBpbmcgPSBhZXMoeCA9IHByb2JzX3N1cnZpdmFsKSwgZGF0YSA9IHRpdGFuaWNfZGF0YSkgKyBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEuMiwgYWxwaGEgPSAwLjUpCgojIEhvdyBjYW4gd2UgZ2V0IHByb2JzX3N1cnZpdmFsIHRvIGJlIHBsb3R0ZWQgZm9yIGV2ZXJ5IHNpbmdsZSBzb2NpYWwgY2xhc3MsIGFuZCBhZ2U/IEFuZCB3aGF0IHBsb3Qgc2hvdWxkIHdlIHVzZT8gCiAgICAgICAKYGBgCgoKYGBge3J9CmxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWwgPC0gZnVuY3Rpb24oc29jaWFsX2NsYXNzLCBzZXgsIGFnZSl7CiAgCiAgdGl0YW5pY19kYXRhJHBjbGFzcyA8LSBzb2NpYWxfY2xhc3MKICB0aXRhbmljX2RhdGEkc2V4IDwtIHNleAogIHRpdGFuaWNfZGF0YSRhZ2UgPC0gYWdlCiAgCiAgcmV0dXJuKGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXggKyBhZ2UsIGRhdGEgPSB0aXRhbmljX2RhdGFfbmV3LCBmYW1pbHkgPSBiaW5vbWlhbCkpCn0KYGBgCgoKCgoKCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDbWQrT3B0aW9uK0kqLgoKV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDbWQrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4gCgpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ21kK1NoaWZ0K0VudGVyKi4gCgpgYGB7cn0KbGlicmFyeShkcGx5cikKbGlicmFyeSh0aWR5dmVyc2UpCmxpYnJhcnkoYnJvb20pCmBgYAoKYGBge3J9CnRpdGFuaWNfZGF0YSA8LSByZWFkLmNzdigidGl0YW5pY19ncm91cF9wcm9qZWN0LmNzdiIpCnRpdGFuaWNfZGF0YQpgYGAKCmBgYHtyfQp0aXRhbmljX2RhdGEkc2V4IDwtIGFzLmNoYXJhY3Rlcih0aXRhbmljX2RhdGEkc2V4KQpgYGAKCgpgYGB7cn0KdGl0YW5pY19kYXRhX25ldyA8LSB0aXRhbmljX2RhdGEgJT4lIG11dGF0ZShzZXhfYmluYXJ5ID0gaWZlbHNlKHNleCA9PSAiZmVtYWxlIiwgMSwwKSkKdGl0YW5pY19kYXRhX25ldwpgYGAKCmBgYHtyfQpsb2dfcmVnX21vZGVsIDwtIGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXhfYmluYXJ5ICsgYWdlLCBkYXRhID0gdGl0YW5pY19kYXRhX25ldywgZmFtaWx5ID0gYmlub21pYWwpCmxvZ19yZWdfbW9kZWwKYGBgCgpgYGB7cn0gCiNUYXNrIDEKCmxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMSA8LSBmdW5jdGlvbihkYXRhX3NldCl7CiAgCiAgI2RhdGFfc2V0IDwtIHRpdGFuaWNfZGF0YSAgICAgI25hbWUgb2YgdXNlcidzIGRhdGEgc2V0CiAgZ2xtKGZvcm11bGEgPSBzdXJ2aXZlZCB+IHBjbGFzcyArIHNleCArIGFnZSwgZGF0YSA9IGRhdGFfc2V0LCBmYW1pbHkgPSBiaW5vbWlhbCkgI25lZWQgdG8gd3JpdGUgZnVuY3Rpb24gdG8gYmUgY29uZHVjaXZlIHRvIGFsbCBkYXRhIHNldHMgb3IganVzdCB0aGlzIG9uZT8gCiAgICNyZXR1cm4gbG9naXN0aWMgcmVncmVzc2lvbiBtb2RlbCBmdW5jdGlvbiAKfQpgYGAKCmBgYHtyfQpsb2dfcmVnX291dHB1dCA8LSBsb2dpc3RpY19yZWdyZXNzaW9uX21vZGVsXzEodGl0YW5pY19kYXRhKQpsb2dfcmVnX291dHB1dCAlPiUgdGlkeSgpCmBgYAoKCmBgYHtyfQpwcm9iX3N1cnZpdmFsIDwtIGZ1bmN0aW9uKHBjbGFzcywgc2V4X2JpbmFyeSwgYWdlKXsgI25lZWQgdG8gaGF2ZSB0aGUgbG9naXN0aWNfcmVncmVzc2lvbl9tb2RlbCBmdW5jdGlvbiBhcyBhbiBhcmd1bWVudCBoZXJlCiAgCiAgI3Rha2UgdGhlIG91dHB1dHMgb2YgdGhlIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMSBmdW5jdGlvbiBhbmQgY2FsY3VsYXRlIHRoZSBwcm9iYWJpbGl0eSBvZiBzdXJ2aXZhbAogIGxvZ19yZWdfb3V0cHV0IDwtIGxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWxfMShwY2xhc3MsIHNleG1hbGUsIGFnZSkKICAKICBsb2dfcmVnX291dHB1dF9yZW9yZyA8LSBsb2dfcmVnX291dHB1dCAlPiUgdGlkeSgpCiAgCiAgbG9nX29kZHNfc3Vydml2YWwgPC0gKGxvZ19yZWdfb3V0cHV0X3Jlb3JnJGVzdGltYXRlWzEsMl0pKyhsb2dfcmVnX291dHB1dF9yZW9yZyRlc3RpbWF0ZVsyLDJdKSsobG9nX3JlZ19vdXRwdXQkYmV0YTIqc2V4X2JpbmFyeSkrKGxvZ19yZWdfb3V0cHV0JGJldGEzKmFnZSkKICAKICAjbG9nX29kZHNfc3Vydml2YWwgPC0gNC41ODkyNy0oMS4xMzMyNCpwY2xhc3MpLSgyLjQ5NzM4KnNleG1hbGUpLSgwLjAzMzg4KmFnZSkKICBwcm9ic19zdXJ2aXZhbCA8LSBleHAobG9nX29kZHNfc3Vydml2YWwpLygxKyhleHAobG9nX29kZHNfc3Vydml2YWwpKSkKICAKICByZXR1cm4ocHJvYnNfc3Vydml2YWwpCn0KYGBgCgpgYGB7cn0KI1Rhc2sgMgoKZ2dwbG90KG1hcHBpbmcgPSBhZXMoeCA9IHByb2JzX3N1cnZpdmFsKSwgZGF0YSA9IHRpdGFuaWNfZGF0YSkgKyBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDEuMiwgYWxwaGEgPSAwLjUpCgojIEhvdyBjYW4gd2UgZ2V0IHByb2JzX3N1cnZpdmFsIHRvIGJlIHBsb3R0ZWQgZm9yIGV2ZXJ5IHNpbmdsZSBzb2NpYWwgY2xhc3MsIGFuZCBhZ2U/IEFuZCB3aGF0IHBsb3Qgc2hvdWxkIHdlIHVzZT8gCiAgICAgICAKYGBgCgoKYGBge3J9CmxvZ2lzdGljX3JlZ3Jlc3Npb25fbW9kZWwgPC0gZnVuY3Rpb24oc29jaWFsX2NsYXNzLCBzZXgsIGFnZSl7CiAgCiAgdGl0YW5pY19kYXRhJHBjbGFzcyA8LSBzb2NpYWxfY2xhc3MKICB0aXRhbmljX2RhdGEkc2V4IDwtIHNleAogIHRpdGFuaWNfZGF0YSRhZ2UgPC0gYWdlCiAgCiAgcmV0dXJuKGdsbShmb3JtdWxhID0gc3Vydml2ZWQgfiBwY2xhc3MgKyBzZXggKyBhZ2UsIGRhdGEgPSB0aXRhbmljX2RhdGFfbmV3LCBmYW1pbHkgPSBiaW5vbWlhbCkpCn0KYGBgCgoKCgoKCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDbWQrT3B0aW9uK0kqLgoKV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDbWQrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4gCgpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuCgo=</div>
 
 
 
