@@ -72,24 +72,24 @@ survival_plots <- function(data_set, nbin) {
 
   ggplot(survival_data) +
     geom_histogram(
-      mapping = aes(x = survival_data$prob.survival), 
+      mapping = aes(x = survival_data$prob.survival),
       bins = nbin, color = "white"
     )
 
 }
 
 plots_by <- function(data_set, nbin) {
-  
+
   #plot probability of survival for each person
   survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
-  
+
   ggplot(survival_data) +
     geom_histogram(
-      mapping = aes(x = survival_data$prob.survival), 
+      mapping = aes(x = survival_data$prob.survival),
       bins = nbin, color = "white"
     ) +
-    facet_wrap(pclass)
-  
+    facet_wrap(~pclass)
+
 }
 
 # How can we get probs_survival to be plotted for every single social class, and age? And what plot should we use?

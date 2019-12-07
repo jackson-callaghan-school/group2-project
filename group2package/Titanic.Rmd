@@ -39,6 +39,10 @@ survival_stats(dataset)
 survival_plots(dataset, 20)
 ```
 
+```{r}
+plots_by(dataset, 20)
+```
+
 
 ```{r}
 titanic_data <- read.csv("titanic_group_project.csv")
