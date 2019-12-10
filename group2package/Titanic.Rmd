@@ -55,6 +55,10 @@ compare_model_w_reality(dataset, 0.7)
 compare_probs_survival(dataset)
 ```
 
+```{r}
+percent_survival_correct(dataset)
+```
+
 
 ```{r}
 titanic_data <- read.csv("titanic_group_project.csv")

@@ -130,4 +130,21 @@ compare_probs_survival <- function(data_set){
   # in survival_data_newest, predict_surv_accuracy = 1 if predicted survival based on cutoff value and actual survival match and 0 if not
 }
 
+percent_survival_correct <- function(data_set){
+
+  analyze_surv_accuracy <- compare_probs_survival(data_set)
+
+  analyze_surv_accuracy_modified <- (sum(analyze_surv_accuracy$predict_surv_accuracy)/nrow(analyze_surv_accuracy))
+
+  return(analyze_surv_accuracy_modified)
+}
+
+percent_survival_correct_bycutoff <- function(data_set){
+
+  cutoff_vals <- seq(from = 0.2, to = 0.8, by = 0.01)
+
+  percent_correct <- percent_survival_correct(data_set)
+  compare_percent_correct_w_cutoff <- ggplot(data_set, mapping = aes(x = , y = percent_correct$)
+} #We need to be able to have a vector of percent correct values and a vector of cutoff values
+
 # How can we get probs_survival to be plotted for every single social class, and age? And what plot should we use?
