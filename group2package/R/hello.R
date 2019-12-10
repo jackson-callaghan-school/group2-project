@@ -78,7 +78,7 @@ survival_plots <- function(data_set, nbin) {
 
 }
 
-plots_by <- function(data_set, nbin) {
+plots_by_class <- function(data_set, nbin) {
 
   #plot probability of survival for each person
   survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
@@ -89,6 +89,20 @@ plots_by <- function(data_set, nbin) {
       bins = nbin, color = "white"
     ) +
     facet_wrap(~pclass)
+
+}
+
+plots_by_sex <- function(data_set, nbin) {
+
+  #plot probability of survival for each person
+  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
+
+  ggplot(survival_data) +
+    geom_histogram(
+      mapping = aes(x = survival_data$prob.survival),
+      bins = nbin, color = "white"
+    ) +
+    facet_wrap(~sex)
 
 }
 

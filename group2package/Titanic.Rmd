@@ -40,7 +40,11 @@ survival_plots(dataset, 20)
 ```
 
 ```{r}
-plots_by(dataset, 20)
+plots_by_class(dataset, 20)
+```
+
+```{r}
+plots_by_sex(dataset, 20)
 ```
 
 
