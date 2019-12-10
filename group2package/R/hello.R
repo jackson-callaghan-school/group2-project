@@ -106,4 +106,16 @@ plots_by_sex <- function(data_set, nbin) {
 
 }
 
+# Task 3
+
+compare_model_w_reality <- function(data_set, cutoff_val){
+
+  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
+
+  survival_data_w_cutoff <- survival_data %>% mutate(survival_cutoff = ifelse(prob.survival > cutoff_val, 1, 0))
+
+  return(survival_data_w_cutoff)
+
+}
+
 # How can we get probs_survival to be plotted for every single social class, and age? And what plot should we use?
