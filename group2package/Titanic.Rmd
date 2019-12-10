@@ -51,6 +51,10 @@ plots_by_sex(dataset, 20)
 compare_model_w_reality(dataset, 0.7)
 ```
 
+```{r}
+compare_probs_survival(dataset)
+```
+
 
 ```{r}
 titanic_data <- read.csv("titanic_group_project.csv")
