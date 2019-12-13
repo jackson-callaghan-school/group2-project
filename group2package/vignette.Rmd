@@ -1,0 +1,100 @@
+---
+title: "Titanic Project vignette"
+output: rmarkdown::html_vignette
+vignette: > 
+  %\VignetteIndexEntry{Titanic Project vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[group2package]{inputenc}
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+#Below are some examples of function calls that are used to complete Task 1, which is fitting a logistic regression model for a data set and calculating the probability of survival given a set of inputs from the user. 
+
+#This following function loads our group2package that contains functions that can be used for the Titanic data set. 
+
+```{r}
+load_all("group2package")
+```
+
+#Reads the Titanic data set into R studio
+
+```{r}
+dataset <- read_data("titanic_group_project.csv")
+dataset
+```
+
+#Fits a logistic regression model for the dataset
+
+```{r}
+model <- default_logistic_model(dataset)
+model
+```
+
+#Calculates the probability of survival based on user-specified values of social class, sex, and age. 
+#Also creates a model for a data set if that hasn't already been done. 
+
+```{r}
+prob_survival(data_set = dataset, pclass = 1, sex_binary = 0, age = 21)
+prob_survival(model = model, pclass = 1, sex_binary = 0, age = 21)
+```
+
+#The following function calls are for Task 2, which is creating tibbles of all probabilities of survivals, outputting histogram plots of survival probability. These histogram plots can include subsets of data that separated by the sex or class of those on the Titanic. 
+
+#This function calculates the probability of survival for every case in the data set, 
+
+```{r}
+probs <- survival_stats(data_set = dataset)
+probs
+```
+
+#This function plots the probability of survival for every case in the data set. 
+
+```{r}
+survival_plots(probs, 10)
+```
+
+#This function takes the data set with the probability of survival and facet wraps based on a variable of the user's choice (exs: sex, social class).
+
+```{r}
+plots_by(probs, "sex", 10)
+plots_by(probs, "pclass", 10)
+```
+
+#This function uses the probability of survival calculated by the logistic regression model and a cutoff value to predict whether each person in the data set will survive or not. 
+
+#The following functions are for completing Task 3, which takes the logistic regression model and calculates whether each case in the dataset survives or not based on a cutoff value that is set by the user, and then compares the guess of survival with what actually happened for each case and finally plots a graph comparing the percentage of the model's correct survival guesses versus the possible cutoff values that the user can give. 
+
+```{r}
+survival_predict(probs, cutoff_val = 0.6)
+```
+
+#This function compares the survival prediction made by the logistic regression model with whether each person actually survived from the Titanic incident. 
+
+```{r}
+comps <- compare_probs_survival(probs, 0.6)
+comps
+```
+
+#This function returns the percentage of survival outcomes that were predicted correctly by the logistic regression model (compared to what actually happened). 
+
+```{r}
+percent_survival_correct(comps)
+```
+
+#This function plots the percent of correct survival guesses versus the possible cutoff values that the user can give.
+
+```{r}
+cutoff_compare(probs)
+```
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
