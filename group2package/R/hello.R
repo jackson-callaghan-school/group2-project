@@ -1,5 +1,13 @@
+#
+#
+#
+
+# ---- Required Packages ----
+
 require(tidyverse)
 
+
+# ---- Data Import ----
 
 #' Import data from file.
 #' Create sex binary column for later use.
@@ -18,30 +26,38 @@ read_data <- function(filename) {
   return(temp_data)
 }
 
-# Task 1
+# ---- Task 1 ----
 
-# need to write function to be conducive to all data sets or just this one?
-logistic_regression_model_1 <- function(data_set) {
+#
+#
+#
 
-  return(glm(
+# make a default logistic model from the dataset
+default_logistic_model <- function(data_set) {
+
+  model <- glm(
     formula = survived ~ pclass + sex_binary + age,
     data = data_set,
     family = binomial
-  ))
+  )
+  
+  return(model)
+
 }
 
-# need to have the logistic_regression_model function as an argument here
-prob_survival <- function(data_set, pclass, sex_binary, age) {
+# gets the probability of survival for specified values
+# takes an already-prepared model, or makes a default one
+prob_survival <- function(model = NULL, data_set = NULL, pclass = 1, sex_binary = 1, age = 1) {
 
-  # take the outputs of the logistic_regression_model_1 function and calculate the probability of survival
-  log_reg_output <- logistic_regression_model_1(data_set)
-
-  log_odds_survival <- (summary(log_reg_output)$coefficients[1,1]) +
-    (summary(log_reg_output)$coefficients[2,1] * pclass) +
-    (summary(log_reg_output)$coefficients[3,1] * sex_binary)+
-    (summary(log_reg_output)$coefficients[4,1] * age)
-
-  # log_odds_survival <- 4.58927-(1.13324*pclass)-(2.49738*sexmale)-(0.03388*age)
+  # make a default model if none is provided
+  if (is.null(model)) {
+    model <- default_logistic_model(data_set)
+  }
+  
+  log_odds_survival <- (summary(model)$coefficients[1,1]) +
+    (summary(model)$coefficients[2,1] * pclass) +
+    (summary(model)$coefficients[3,1] * sex_binary)+
+    (summary(model)$coefficients[4,1] * age)
 
     probs_survival <- exp(log_odds_survival) / (1 + (exp(log_odds_survival)))
 
@@ -49,14 +65,20 @@ prob_survival <- function(data_set, pclass, sex_binary, age) {
 
     }
 
-# Task 2
+# ---- Task 2 ----
 
-survival_stats <- function(data_set) {
+survival_stats <- function(data_set, model = NULL) {
+  
+  # make a default model if none is provided
+  if (is.null(model)) {
+    log_model <- default_logistic_model(data_set)
+  }
 
   # calculate the odds of survival for every case in a dataset
   new_data <- data_set %>%
-    mutate(prob.survival = prob_survival(
-      data_set,
+    mutate(survival.prob = prob_survival(
+      model = model,
+      data_set = data_set,
       data_set$pclass,
       data_set$sex_binary,
       data_set$age
@@ -65,86 +87,121 @@ survival_stats <- function(data_set) {
   return(new_data)
 }
 
-survival_plots <- function(data_set, nbin) {
+# takes set with already made survival probabilities
+survival_plots <- function(survival_data, nbin = 30) {
+  
+  survival_data <- survival_data %>% 
+    drop_na("survival.prob")
 
-  #plot probability of survival for each person
-  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
+  plt <- ggplot(survival_data) +
+    geom_histogram(
+      mapping = aes(x = survival_data$survival.prob),
+      bins = nbin, color = "white"
+    ) +
+    labs(x = "probability of survival")
+  
+  return(plt)
 
+}
+
+# takes set with already made survival probabilities
+# expects a string form of column name
+plots_by <- function (survival_data, colname, nbin = 30) {
+  
+  survival_data <- survival_data %>% 
+    drop_na("survival.prob")
+  
   ggplot(survival_data) +
     geom_histogram(
-      mapping = aes(x = survival_data$prob.survival),
+      mapping = aes(x = survival_data$survival.prob),
       bins = nbin, color = "white"
+    ) +
+    labs(x = "probability of survival") +
+    facet_wrap(colname)
+}
+
+# ---- Task 3 ----
+
+# predict survival using cutoff value
+survival_predict <- function(survival_data, cutoff_val = 0.51) {
+
+  w_cutoff <- survival_data %>% 
+    mutate(survival.pred = ifelse(survival.prob > cutoff_val, 1, 0))
+
+  return(w_cutoff)
+  
+}
+
+# compare model to reality, expects set with predictions
+compare_probs_survival <- function(survival_data, cutoff_val = 0.51) {
+  
+  survival_pred <- survival_predict(survival_data, cutoff_val)
+
+  # new value , 1 if survival prediction matches reality else 0
+  survival_pred <- survival_pred %>% 
+    mutate(pred.correct = ifelse(survival.pred == survived, 1, 0))
+
+  return(survival_pred)
+  
+}
+
+# get percent of correct predictions
+# expects set with comparisons made
+percent_survival_correct <- function(data_set) {
+  
+  data_set <- data_set %>% 
+    drop_na("pred.correct")
+
+  pcorrect <- 100 * sum(data_set$pred.correct) / nrow(data_set)
+
+  return(pcorrect)
+  
+}
+
+# compare the accuracy of a range of cutoff values
+cutoff_compare <- function(survival_data, c.range = c(0, 1), n.by = 0.01) {
+  
+  temp_range = seq(from = c.range[1], to = c.range[2], by = n.by)
+  
+  test_vals <- tibble(
+    c.val = temp_range,
+    p.correct = rep(NA, length(temp_range))
+  )
+  
+  percentages <- rep(NA, length(temp_range))
+  
+  for (i in 1:length(temp_range)) {
+    predictions <- compare_probs_survival(survival_data, temp_range[i])
+    percentages[i] <- percent_survival_correct(predictions)
+  }
+  
+  test_vals$p.correct <- percentages
+  
+  cutoff_plot <- ggplot(test_vals) +
+    aes(x = c.val, y = p.correct, color = p.correct) +
+    geom_point() +
+    geom_smooth() +
+    labs(x = "cutoff value", y = "percent correct") +
+    scale_x_continuous(breaks = seq(c.range[1], c.range[2], len = 10)) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    geom_hline(
+      yintercept = max(test_vals$p.correct),
+      color = "green"
+    ) +
+    geom_vline(
+      xintercept = test_vals$c.val[test_vals$p.correct == max(test_vals$p.correct)],
+      color = "green"
+    ) +
+    geom_text(
+      aes(
+        x = test_vals$c.val[test_vals$p.correct == max(test_vals$p.correct)],
+        y = 50,
+        label = test_vals$c.val[test_vals$p.correct == max(test_vals$p.correct)]
+      ),
+      color = "black"
     )
+  
+  return(cutoff_plot)
+  
+} 
 
-}
-
-plots_by_class <- function(data_set, nbin) {
-
-  #plot probability of survival for each person
-  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
-
-  ggplot(survival_data) +
-    geom_histogram(
-      mapping = aes(x = survival_data$prob.survival),
-      bins = nbin, color = "white"
-    ) +
-    facet_wrap(~pclass)
-
-}
-
-plots_by_sex <- function(data_set, nbin) {
-
-  #plot probability of survival for each person
-  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
-
-  ggplot(survival_data) +
-    geom_histogram(
-      mapping = aes(x = survival_data$prob.survival),
-      bins = nbin, color = "white"
-    ) +
-    facet_wrap(~sex)
-
-}
-
-# Task 3
-
-compare_model_w_reality <- function(data_set, cutoff_val){
-
-  cutoff_val <- 0.6
-  survival_data <- survival_stats(data_set) %>% drop_na("prob.survival")
-
-  survival_data_w_cutoff <- survival_data %>% mutate(survival_cutoff = ifelse(prob.survival > cutoff_val, 1, 0))
-
-  return(survival_data_w_cutoff)
-
-}
-
-compare_probs_survival <- function(data_set){
-
-  survival_data_newer <- compare_model_w_reality(data_set)
-
-  survival_data_newest <- survival_data_newer %>% mutate(predict_surv_accuracy = ifelse(survival_cutoff == survived, 1, 0))
-
-  return(survival_data_newest)
-
-  # in survival_data_newest, predict_surv_accuracy = 1 if predicted survival based on cutoff value and actual survival match and 0 if not
-}
-
-percent_survival_correct <- function(data_set){
-
-  analyze_surv_accuracy <- compare_probs_survival(data_set)
-
-  analyze_surv_accuracy_modified <- (sum(analyze_surv_accuracy$predict_surv_accuracy)/nrow(analyze_surv_accuracy))
-
-  return(analyze_surv_accuracy_modified)
-}
-
-percent_survival_correct_bycutoff <- function(data_set){
-
-  cutoff_vals <- seq(from = 0.2, to = 0.8, by = 0.01)
-
-  percent_correct <- percent_survival_correct(data_set)
-  compare_percent_correct_w_cutoff <- ggplot(data_set, mapping = aes(x = , y = percent_correct$)
-} #We need to be able to have a vector of percent correct values and a vector of cutoff values
-
-# How can we get probs_survival to be plotted for every single social class, and age? And what plot should we use?

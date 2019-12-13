@@ -4,25 +4,58 @@ output: html_notebook
 ---
 
 ```{r}
+load_all("group2package")
+```
+
+
+```{r}
 dataset <- read_data("titanic_group_project.csv")
 dataset
 ```
 
 ```{r}
-tiris <- as.tibble(iris)
-tiris
+model <- default_logistic_model(dataset)
+model
+```
+
+```{r}
+prob_survival(data_set = dataset, pclass = 1, sex_binary = 0, age = 21)
+prob_survival(model = model, pclass = 1, sex_binary = 0, age = 21)
+```
+
+```{r}
+probs <- survival_stats(data_set = dataset)
+probs
+```
+
+```{r}
+survival_plots(probs, 10)
+plots_by(probs, "sex", 10)
+plots_by(probs, "pclass", 10)
+
+plots_by(probs, "pclass", 10)
+```
+
+```{r}
+survival_predict(probs, cutoff_val = 0.6)
+comps <- compare_probs_survival(probs, 0.6)
+```
+
+```{r}
+comps
+percent_survival_correct(comps)
+```
+
+```{r}
+load_all("group2package")
+```
+
+```{r}
+probs
 ```
 
 
 ```{r}
-
-
-mytest <- function(variable) {
-  tiris[variable]
-} 
-```
-
-```{r}
-mytest("Sepal.Length")
+cutoff_compare(probs)
 ```
 

@@ -26,8 +26,6 @@ Task 1:
   
   - returns probability of survival
 
-
-
 Task 2:
 
 - write function to create tibble of all probabilities of survival (jackson)
@@ -46,22 +44,20 @@ Task 2:
   
   - makes plots
 
-
-
 Task 3:
 
 - write function which guesses at survival
-
+  
   - takes probability cutoff value
   
   - returns df with new col of 0 or 1 for predicted survival
-  
+
 - write function which compares guess of survival to predicted survival
-
-  - output df with new column for correct prediction or not
   
-- analyze/visualize accuracy of model
+  - output df with new column for correct prediction or not
 
+- analyze/visualize accuracy of model
+  
   - graph of % correct vs cutoff value?
   
   - graph of all survival probabilities colored by correct or not?
